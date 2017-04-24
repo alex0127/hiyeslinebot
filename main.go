@@ -37,7 +37,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
 
 	resp, err := http.PostForm("https://hr.hiyes.tw:443/getMessage.php",
-        url.Values{"firstname": {"Kordan"}, "lastname": {"Ou"}})
+        url.Values{"mid": {event.ReplyToken}, "message": {message.Text}})
     if err != nil {
         fmt.Println(err)
     } else {
