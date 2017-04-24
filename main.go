@@ -18,7 +18,8 @@ import (
 	"net/http"
 	"os"
 	"net/url"
-
+	"io/ioutil"
+	
 	"github.com/line/line-bot-sdk-go/linebot"
 )
 
