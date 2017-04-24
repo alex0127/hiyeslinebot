@@ -38,14 +38,14 @@ func main() {
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
 
-	resp, err := http.Get("https://hr.hiyes.tw:443/getMessage.php?mid=Kordan&message=Ou")
+
+    resp, err = http.Get("https://hr.hiyes.tw:443/getMessage.php?mid=Kordan&message=Ou")
     if err != nil {
         fmt.Println(err)
     } else {
         body, _ := ioutil.ReadAll(resp.Body)
-        fmt.Println("POST OK: ", string(body), resp)
+        fmt.Println("GET OK: ", string(body), resp)
     }
-
 
 
 	if err != nil {
