@@ -18,7 +18,7 @@ import (
 	"net/http"
 	"os"
 	"net/url"
-	
+
 	"github.com/line/line-bot-sdk-go/linebot"
 )
 
@@ -38,7 +38,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
 
 	resp, err := http.PostForm("https://hr.hiyes.tw:443/getMessage.php",
-        url.Values{"mid": {event.ReplyToken}, "message": {message.Text}})
+        url.Values{"mid": {"ziv"}, "message": {"test"}})
     if err != nil {
         fmt.Println(err)
     } else {
