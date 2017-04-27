@@ -62,11 +62,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
 				//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(event.ReplyToken+":"+message.ID+"-"+message.Text+" OK!")).Do(); err != nil {
-				if message.Text == "勤耕延吉"{
-					msg = "勤耕延吉 · 電話：(02)25705777 · 地址：台北市松山區光復南路58巷 <br> http://www.hiyes.tw/allcase/yanji/index.html"				
+				if message.Text == "熱銷"{
+					msg = "勤耕延吉 · 電話：(02)25705777 · 地址：台北市松山區光復南路58巷 http://www.hiyes.tw/allcase/yanji/index.html"
+					msg = msg + "幸福莊園 · 電話：02-2678-7222 · 地址：新北市鶯歌區鳳福路及鳳鳴路口 · 接待地址：新北市鶯歌區鶯歌路及鳳鳴路口 http://www.hiyes.tw/allcase/happymanor/index.html"				
 				}
-				if message.Text == "幸福莊園"{
-					msg = "幸福莊園 · 電話：02-2678-7222 · 地址：新北市鶯歌區鳳福路及鳳鳴路口 · 接待地址：新北市鶯歌區鶯歌路及鳳鳴路口 <br> http://www.hiyes.tw/allcase/happymanor/index.html"				
+				if message.Text == "預約"{					
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你想預約的時間")).Do(); err != nil {
+						log.Print(err)
+					}					
 				}
 				if message.Text == "晚上"{
 					msg = "現在是下班時間,造成你的不便敬請原諒!"				
