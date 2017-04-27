@@ -22,13 +22,16 @@ import (
 	//"io/ioutil"
 
 	"github.com/line/line-bot-sdk-go/linebot"
+	//"github.com/gorilla/sessions"
 )
 
 var bot *linebot.Client
 
 func main() {
 	var err error
-	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
+	var channelSecret = os.Getenv("ChannelSecret")
+    var channelAccessToken =  os.Getenv("ChannelAccessToken")
+	bot, err = linebot.New(channelSecret, channelAccessToken)
 	log.Println("Bot:", bot, " err:", err)
 	http.HandleFunc("/callback", callbackHandler)
 	port := os.Getenv("PORT")
@@ -47,6 +50,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
         body, _ := ioutil.ReadAll(resp.Body)
         fmt.Println("GET OK: ", string(body), resp)
     }*/
+
+
+
+
+
 
 
 	if err != nil {
