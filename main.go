@@ -71,19 +71,27 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 				if message.Text == "預約"{					
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你想預約的時間")).Do(); err != nil {
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("您想預約的日期")).Do(); err != nil {
 						log.Print(err)
 					}					
 				}
+				if strings.Contains(message.Text, "月") or strings.Contains(message.Text, "日"){
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("您想預約的日期是" + message.Text + ",您想預約的時間?")).Do(); err != nil {
+						log.Print(err)
+					}
+				}
 				if strings.Contains(message.Text, "點"){
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你想預約的時間" + message.Text)).Do(); err != nil {
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你想預約的時間是" + message.Text + " , 您的預約已建立,會有專人與您聯絡!")).Do(); err != nil {
 						log.Print(err)
 					}
 				}
 				if message.Text == "晚上"{
 					msg = "現在是下班時間,造成你的不便敬請原諒!"				
 				}
-				
+
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你好,請輸入你想要詢問的文字,如 : 熱銷,預約")).Do(); err != nil {
+						log.Print(err)
+				}
 			}
 		}
 	}
