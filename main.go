@@ -63,7 +63,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			case *linebot.TextMessage:
 				//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(event.ReplyToken+":"+message.ID+"-"+message.Text+" OK!")).Do(); err != nil {
 				if message.Text == "勤耕延吉"{
-					msg = "勤耕延吉"
+					msg = "勤耕延吉 http://www.hiyes.tw/allcase/yanji/index.html"				
+				}
+				if message.Text == "幸福莊園"{
+					msg = "幸福莊園 http://www.hiyes.tw/allcase/happymanor/index.html"				
 				}
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(msg)).Do(); err != nil {
 					log.Print(err)
