@@ -72,8 +72,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if message.Text == "預約"{					
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你想預約的時間")).Do(); err != nil {
 						log.Print(err)
-					}
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.Text)).Do(); err != nil {
+					}					
+				}
+				if strings.Contains(message.Text, "點"){
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你想預約的時間" + message.Text)).Do(); err != nil {
 						log.Print(err)
 					}
 				}
