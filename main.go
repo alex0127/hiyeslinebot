@@ -66,8 +66,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if message.Text == "熱銷"{
 					//msg = "http://www.hiyes.tw/allcase/yanji/index.html 勤耕延吉 · 電話：(02)25705777 · 地址：台北市松山區光復南路58巷 "					
 					//msg = msg + "http://www.hiyes.tw/allcase/happymanor/index.html 幸福莊園 · 電話：02-2678-7222 · 地址：新北市鶯歌區鳳福路及鳳鳴路口 · 接待地址：新北市鶯歌區鶯歌路及鳳鳴路口  "
-					msg = "http://www.hiyes.tw/allcase/yanji/index.html"
-					msg = msg + "http://www.hiyes.tw/allcase/happymanor/index.html"
+					msg = "http://www.hiyes.tw/allcase/yanji/index.html "
+					//msg = msg + "http://www.hiyes.tw/allcase/happymanor/index.html"
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(msg)).Do(); err != nil {
 						log.Print(err)
 					}
