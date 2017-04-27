@@ -75,7 +75,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						log.Print(err)
 					}					
 				}
-				if strings.Contains(message.Text, "月") or strings.Contains(message.Text, "日"){
+				if strings.Contains(message.Text, "月") || strings.Contains(message.Text, "日"){
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("您想預約的日期是" + message.Text + ",您想預約的時間?")).Do(); err != nil {
 						log.Print(err)
 					}
