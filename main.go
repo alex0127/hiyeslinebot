@@ -18,7 +18,7 @@ import (
 	"net/http"
 	"os"
 	//"net/url"
-	"io/ioutil"
+	//"io/ioutil"
 
 	"github.com/line/line-bot-sdk-go/linebot"
 )
@@ -40,12 +40,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 
     resp, err := http.Get("https://hr.hiyes.tw:443/getMessage.php?mid=Kordan&message=Ou")
-    if err != nil {
+    /*if err != nil {
         fmt.Println(err)
     } else {
         body, _ := ioutil.ReadAll(resp.Body)
         fmt.Println("GET OK: ", string(body), resp)
-    }
+    }*/
 
 
 	if err != nil {
@@ -56,12 +56,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
-
+    var msg string
 	for _, event := range events {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(event.ReplyToken+":"+message.ID+"-"+message.Text+" OK!")).Do(); err != nil {
+				//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(event.ReplyToken+":"+message.ID+"-"+message.Text+" OK!")).Do(); err != nil {
+				if message.Text == "勤耕延吉"{
+					msg="勤耕延吉"
+				}
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(msg)).Do(); err != nil {
 					log.Print(err)
 				}
 			}
